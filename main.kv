@@ -1,0 +1,154 @@
+WindowManager:
+	name : "window_manager"
+	id: window_manager
+	
+	HomeScreen:
+	AddScreen:
+		
+<HomeScreen>:
+	name: "home_screen"
+	id: home_screen
+	BoxLayout:
+        orientation: "vertical"
+        padding: dp(5)
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # White background
+            Rectangle:
+                pos: self.pos
+                size: self.size				
+		MDTopAppBar:
+			title: "Toy sale"
+			md_bg_color: 0.98, 0.98,0.8, 1
+			specific_text_color: 0,0,0,1
+			left_action_items: [["menu"]]
+			right_action_items: [['logout']]
+			elevation: 3
+			
+	    MDBoxLayout:
+		    padding: [10, 20]
+		    spacing: 10
+		    orientation: "vertical"
+	    	md_bg_color: 0.8, 0.8,0.8, 1
+	    	
+	        MDScrollView:
+	    	    MDList:
+	    	        id:container
+	    	        spacing: 10
+
+	    	
+	BoxLayout:
+        orientation: "vertical"
+        padding: dp(5)
+        md_bg_color: 1, 1, 0, 1  
+        BoxLayout:
+            size_hint_y: None
+            height: dp(70)
+            padding: dp(4)
+            spacing: dp(5)
+            
+            MDLabel:
+                text: "arrow-right-bold-outline"
+            
+            MDFloatingActionButton:
+                icon: "arrow-right-bold-outline"
+                pos_hint: {"center_x":0.5, "center_y":0.3}
+                md_bg_color: 0, 0,0, 1
+                on_release:
+                    self.elevation= 0
+        	        root.manager.current="add_screen"
+        	        root.manager.transition.direction="left"
+
+<AddScreen>:
+	name: "add_screen"
+	id: add_screen
+	MDBoxLayout:
+		orientation: "vertical"					
+		MDTopAppBar:
+			title: "Toy sale"
+			md_bg_color: 0.98, 0.98,0.8, 1
+			specific_text_color: 0,0,0,1
+			left_action_items: [["menu"]]
+			right_action_items: [['logout']]
+			elevation: 3
+
+	    MDBoxLayout:
+		    padding: [10, 20]
+		    spacing: 2
+		    orientation: "vertical"
+	    	md_bg_color: 0.8, 0.8,0.8, 1	    	
+	    	
+	MDTextField:
+	    id: mdtext
+	    hint_text: "Add title"
+	    mode: "rectangle"
+	    pos_hint: {"center_x":0.5, "center_y":0.8}
+	    size_hint_x: None
+	    width: 650
+
+	MDTextField:
+	    id: price
+	    hint_text: "Price"
+	    mode: "rectangle"
+	    pos_hint: {"center_x":0.5, "center_y":0.7}
+	    size_hint_x: None
+	    width: 650
+	    	   	    	    	    	   	    	    
+	MDTextField:
+	    id: discreption
+	    hint_text: "discreption"
+	    mode: "rectangle"
+	    pos_hint: {"center_x":0.5, "center_y":0.6}
+	    size_hint_x: None
+	    width: 650
+
+	MDTextField:
+	    id: seller
+	    hint_text: "seller's name"
+	    mode: "rectangle"
+	    pos_hint: {"center_x":0.5, "center_y":0.5}
+	    size_hint_x: None
+	    width: 650
+	    
+	MDTextField:
+	    id: created
+	    hint_text: "Selling"
+	    mode: "rectangle"
+	    pos_hint: {"center_x":0.5, "center_y":0.4}
+	    size_hint_x: None
+	    width: 650
+	    
+	MDTextField:
+	    id: updated
+	    hint_text: "Data Bought"
+	    icon_right: "calendar"
+	    mode: "rectangle"
+	    on_focus: app.show_date_picker(self.focus)
+	    pos_hint: {"center_x":0.5, "center_y":0.3}
+	    size_hint_x: None
+	    width: 650
+	    
+    MDRectangleFlatButton:
+    	text: "SAVE"
+    	pos_hint: {"center_x":0.5, "center_y":0.2}
+    	
+	BoxLayout:
+        orientation: "vertical"
+        padding: dp(5)
+        BoxLayout:
+            size_hint_y: None
+            height: dp(70)
+            padding: dp(4)
+            spacing: dp(5)   
+            
+            MDLabel:
+            	text: "chirag"
+            
+            MDFloatingActionButton:
+                icon: "arrow-left-bold-outline"
+                pos_hint: {"center_x":0.5, "center_y":0.3}
+                md_bg_color: 0, 0,0, 1
+                on_release:
+                	self.elevation=0 
+                	root.manager.current= "home_screen"
+                	root.manager.transition.direction = "right"
